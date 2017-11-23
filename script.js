@@ -279,6 +279,8 @@ $(function(){
     $('#bookmarked-groups').css("display", "none")
     $('#faceoff-groups').css("display", "none")
     $('#show-group').css("display", "none")
+    $('#profile-section').css("display", "none")
+
   }
 
   // Get all groups that have not in cart or deleted
@@ -500,7 +502,7 @@ $(function(){
     $('#filters').css("display", "")
   });
 
-    $('#logo').click(function(){
+  $('#logo').click(function(){
     hide_all()
     $('#browse-groups').css("display", "")
     $('#filters').css("display", "")
@@ -510,6 +512,12 @@ $(function(){
     set_favourites()
     hide_all()
     $('#bookmarked-groups').css("display", "")
+  });
+
+  $('#profile').click(function(){
+    console.log("Show profile")
+    hide_all()
+    $('#profile-section').css("display", "")
   });
 
   $('#love_1').click(function(){
