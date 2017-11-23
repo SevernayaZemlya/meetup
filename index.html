@@ -1,68 +1,126 @@
 <head>
-  <title>Meetup Group Compare</title>
+  <title>Meetup 2.0</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
   <link rel='stylesheet' doctype='text/html' href='styles.css'>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<!--   <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+  <script type='text/javascript' src='script.js'></script>  -->
+
+  <script type='text/javascript' src='jquery-3.2.1.min.js'></script>
   <script src='script.js'></script>
 </head>
 
-<div class='container'>
-  <img id='logo' src='images/meetup.png'>
-  <div id='menu'>
-    <img id='profile' class="icon" src='images/profile.png'>
-    <img id='settings' class="icon" src='images/settings.png'>
-    <div id="filter-form">
-      <form id="filters">
-        <input type="checkbox" checked id="location">Location<br>
-        <input type="checkbox" checked id="members">Members<br>
-        <input type="checkbox" checked id="founded">Founded<br>
-        <input type="checkbox" checked id="cost">Cost<br>
-        <input type="checkbox" checked id="next_event">Next Event<br>
-        <input type="checkbox" checked id="tags">Tags<br>
-        <input type="checkbox" checked id="organizers">Organizers<br>
-        <div id="filter-submit">Filter</div>
-      </form>
-    </div>
-  </div>
+<body>
+  <div class='container'>
+    <div id='logo'>Meetup</div>
 
-  <div id='cart-container'>
-    <!-- <img id='cart' src='images/cart.png'> -->
-    <ul>
-    </ul>
-  </div>
-</div>
+    <div id='menu'>
+      <div id='faceoff-submit' class='button'>Face off</div>
+      <img id='profile' class="icon" src='images/profile.png'>
+      <img id='settings' class="icon" src='images/settings.png'>
+      <div id="attributes">
+        <form id="attribute-form">
+          <input type="checkbox" checked id="description">Description<br>
+          <input type="checkbox" checked id="location">Location<br>
+          <input type="checkbox" checked id="members">Members<br>
+          <input type="checkbox" checked id="created">Created<br>
+          <input type="checkbox" checked id="cost">Cost<br>
+          <input type="checkbox" checked id="next_event">Next Event<br>
+          <input type="checkbox" checked id="tags">Tags<br>
+          <input type="checkbox" checked id="organizers">Organizers<br>
+          <div id="attribute-submit" class="button">SUBMIT</div>
+        </form>
+      </div>
+    </div>
 
-<div class='container' id='groups-area'>
-  <div class='group-sec col-md-3'>
-    <div id='group_1' class='group'>
+    <img id='cart' src='images/cart.png'>
+    <div id='cart-container'>
+      <ul id='cart-items'>
+      </ul>
     </div>
-    <div class="buttons">
-      <img id='love_1' src='images/heart.png'>
-      <img id='delete_1' src='images/delete.png'>
-    </div>
-  </div>
-  <div class='group-sec col-md-3'>
-    <div id='group_2' class='group'>
-    </div>
-    <div class="buttons">
-      <img id='love_2' src='images/heart.png'>
-      <img id='delete_2' src='images/delete.png'>
-    </div>
-  </div>
-  <div class='group-sec col-md-3'>
-    <div id='group_3' class='group'>
-    </div>
-    <div class="buttons">
-      <img id='love_3' src='images/heart.png'>
-      <img id='delete_3' src='images/delete.png'>
-    </div>
-  </div>
-  <div class='group-sec col-md-3'>
-    <div id='group_4' class='group'>
-    </div>
-    <div class="buttons">
-      <img id='love_4' src='images/heart.png'>
-      <img id='delete_4' src='images/delete.png'>
-    </div>
-  </div>
-</div>
+    <div id="filters">
+      Location:
+      <input list="browsers" id="location-filter">
+      <datalist id="browsers">
+        <option value="Vancouver"></option>
+        <option value="Burnaby"></option>
+        <option value="Richmond"></option>
+      </datalist>
+      At least: 1<input type="range" min='0' max='100' value='1' id="members-filter">100 Members
+      <input type="radio" name="cost" id="cheap-filter">$
+      <input type="radio" name="cost" id="moderate-filter">$$
+      <input type="radio" name="cost" id="expensive-filter">$$$
+      <div id="filter-submit" class="button">FILTER</div><br>
+<!--           <input type="checkbox" id="adventure-filter">Adventure
+          <input type="checkbox" id="social-filter">Social
+          <input type="checkbox" id="fitness-filter">Fitness
+          <input type="checkbox" id="art-filter">Art -->
+        </div>
+      </div>
+
+      <div class='container' id='browse-groups'>
+        <div class='group-sec col-md-3'>
+          <div id='pos_1' class='group'>
+          </div>
+          <div class="buttons">
+            <img id='love_1' src='images/heart.png'>
+            <img id='delete_1' src='images/delete.png'>
+          </div>
+        </div>
+        <div class='group-sec col-md-3'>
+          <div id='pos_2' class='group'>
+          </div>
+          <div class="buttons">
+            <img id='love_2' src='images/heart.png'>
+            <img id='delete_2' src='images/delete.png'>
+          </div>
+        </div>
+        <div class='group-sec col-md-3'>
+          <div id='pos_3' class='group'>
+          </div>
+          <div class="buttons">
+            <img id='love_3' src='images/heart.png'>
+            <img id='delete_3' src='images/delete.png'>
+          </div>
+        </div>
+        <div class='group-sec col-md-3'>
+          <div id='pos_4' class='group'>
+          </div>
+          <div class="buttons">
+            <img id='love_4' src='images/heart.png'>
+            <img id='delete_4' src='images/delete.png'>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="bookmarked-groups">
+        <h2>Empty Cart. <a id="add-groups">Go add groups!!</a></h2>
+      </div>
+
+      <div class="container" id="faceoff-groups">
+        <h2>FACEOFF</h2>
+        <div class='group-sec col-md-4'>
+          <div id='fev' class='group'>
+          </div>
+          <div class="buttons">
+            <div id='choose_1'  class="button">VIEW GROUP</div>
+          </div>
+        </div>
+        <div class='group-sec col-md-4'>
+          <div id='fev2' class='group'>
+          </div>
+          <div class="buttons">
+            <div id='choose_2' class="button">VIEW GROUP</div>
+          </div>
+        </div>
+        <div class='group-sec col-md-4'>
+          <div id='fev3' class='group'>
+          </div>
+          <div class="buttons">
+            <div id='choose_3'  class="button">VIEW GROUP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="show-group">
+      </div>
+    </body>
