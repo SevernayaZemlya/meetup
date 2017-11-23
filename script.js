@@ -281,6 +281,7 @@ $(function(){
     $('#show-group').css("display", "none")
   }
 
+  // Get all groups that have not in cart or deleted
   var get_groups = function() {
     valid_groups = []
 
@@ -293,6 +294,7 @@ $(function(){
     }
   }
 
+  // Populate browse page with groups
   var set_groups = function() {
     if (valid_groups[0] != undefined){
       document.getElementById("pos_1").innerHTML = format_group(valid_groups[0])
@@ -321,6 +323,7 @@ $(function(){
     next  = 4
   }
 
+  // Store all groups in cart in favourites variable
   var set_favourites = function() {
     favourites = []
     for (let group of groups){
@@ -336,6 +339,7 @@ $(function(){
     }
   }
 
+  // Populate face off page - takes first 3 groups in cart
   var set_faceoff = function() {
     console.log("FACEOFF")
     hide_all()
@@ -345,6 +349,7 @@ $(function(){
     document.getElementById("fev3").innerHTML = format_group(favourites[2])
   }
 
+  // Replace single group in browse page
   var set_group = function(id) {
     if (valid_groups[next] != undefined){
       document.getElementById("pos_"+id).innerHTML = format_group(valid_groups[next])
@@ -354,9 +359,8 @@ $(function(){
     next++
   }
 
+  // Show a single group
   var show_group = function(id) {
-    console.log(id)
-    console.log(favourites[id])
     hide_all()
     $('#show-group').css("display", "")
     html = "<h2>"+favourites[id]['name']+"</h2>"
@@ -377,12 +381,13 @@ $(function(){
     // show_group(id)
   });
 
-
+  // Add mini card to cart
   var add_cart = function(i) {
     cart_html += "<li>"+valid_groups[i]['short']+"</li>"
     document.getElementById("cart-items").innerHTML = cart_html
   }
 
+  // Update attributes to display
   var update_attributes = function(){
     attributes = []
     if ($('#description').is(":checked")){
@@ -412,6 +417,7 @@ $(function(){
     set_groups()
   }
 
+  // Filter groups
   var match_filter = function(group){
     filter = {
       location: $('#location-filter').val(),
@@ -502,7 +508,6 @@ $(function(){
 
   $('#cart').click(function(){
     set_favourites()
-
     hide_all()
     $('#bookmarked-groups').css("display", "")
   });
@@ -590,7 +595,6 @@ $(function(){
     set_group(4)
     pos_4 = next
   });
-
 
   $('#choose_1').click(function(){
     console.log("CHOOSE 1")
